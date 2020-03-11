@@ -42,6 +42,8 @@
 		6AAD96DF1E1C07B300BABC91 /* PieCustomViewsLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAD96AB1E1C075300BABC91 /* PieCustomViewsLayer.swift */; };
 		6AC1CD4A1E1C013900120720 /* PieCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC1CD431E1C013900120720 /* PieCharts.framework */; };
 		6AC1CD4B1E1C013900120720 /* PieCharts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC1CD431E1C013900120720 /* PieCharts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AC0731522419730D00224EED /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AC0731512419730D00224EED /* README.md */; };
+		AC0731532419730D00224EED /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AC0731512419730D00224EED /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +109,7 @@
 		6AAD96E21E1C089700BABC91 /* PieCharts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieCharts.h; sourceTree = "<group>"; };
 		6AC1CD431E1C013900120720 /* PieCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PieCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AFF22B71E16DF520001B0A4 /* PieChartsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PieChartsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC0731512419730D00224EED /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/PieChartsSwiftPackage/README.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +158,7 @@
 			path = "Supporting files";
 			sourceTree = "<group>";
 		};
-		6AAD968C1E1C075300BABC91 /* PieCharts */ = {
+		6AAD968C1E1C075300BABC91 /* Package */ = {
 			isa = PBXGroup;
 			children = (
 				6AAD968D1E1C075300BABC91 /* Core */,
@@ -165,7 +168,7 @@
 				6AAD96B11E1C075300BABC91 /* Util */,
 				6AAD96E01E1C089700BABC91 /* Supporting files */,
 			);
-			path = PieCharts;
+			path = Package;
 			sourceTree = "<group>";
 		};
 		6AAD968D1E1C075300BABC91 /* Core */ = {
@@ -309,7 +312,8 @@
 		6AFF22AE1E16DF520001B0A4 = {
 			isa = PBXGroup;
 			children = (
-				6AAD968C1E1C075300BABC91 /* PieCharts */,
+				AC0731512419730D00224EED /* README.md */,
+				AC0731552419734000224EED /* Source */,
 				6AAD966F1E1C030E00BABC91 /* PieChartsDemo */,
 				6AFF22B81E16DF520001B0A4 /* Products */,
 			);
@@ -322,6 +326,14 @@
 				6AC1CD431E1C013900120720 /* PieCharts.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AC0731552419734000224EED /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				6AAD968C1E1C075300BABC91 /* Package */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,13 +393,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Ivan Schuetz";
 				TargetAttributes = {
 					6AC1CD421E1C013900120720 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 37QAPDY2PR;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 					6AFF22B61E16DF520001B0A4 = {
@@ -400,7 +412,7 @@
 			};
 			buildConfigurationList = 6AFF22B21E16DF520001B0A4 /* Build configuration list for PBXProject "PieCharts" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -422,6 +434,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0731532419730D00224EED /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +442,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0731522419730D00224EED /* README.md in Resources */,
 				6AAD96851E1C030E00BABC91 /* DoughnutDemo.xib in Resources */,
 				6AAD96801E1C030E00BABC91 /* Main.storyboard in Resources */,
 				6AAD967E1E1C030E00BABC91 /* Assets.xcassets in Resources */,
@@ -529,7 +543,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.schuetz.PieCharts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -552,7 +566,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.schuetz.PieCharts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -562,6 +576,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -620,6 +635,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -672,9 +688,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 37QAPDY2PR;
 				INFOPLIST_FILE = "$(SRCROOT)/PieChartsDemo/Supporting files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.schuetz.PieChartsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -687,9 +704,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 37QAPDY2PR;
 				INFOPLIST_FILE = "$(SRCROOT)/PieChartsDemo/Supporting files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.schuetz.PieChartsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
