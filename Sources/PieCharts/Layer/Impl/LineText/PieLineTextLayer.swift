@@ -54,11 +54,17 @@ open class PieLineTextLayer: PieChartLayer {
         
         let lineLayer = createLine(p1: p1, p2: p2, p3: p3)
         let label = createLabel(slice: slice, isRightSide: isRightSide, referencePoint: p3)
-        
+
         chart?.container.addSublayer(lineLayer)
         animator.animate(lineLayer)
-        
-        chart?.addSubview(label)
+
+        for slice in sliceViews {
+            if CGRect.intersects(slice.value.1) {
+                continue
+            } else {
+                chart?.addSubview(label)
+            }
+        }
 
         if settings.useLineMarker {
             let dot = UIView(frame: CGRect(
