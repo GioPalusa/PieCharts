@@ -17,9 +17,10 @@ public struct PieLineTextLayerSettings {
     public var labelXOffset: CGFloat = 5
     public var labelYOffset: CGFloat = 0
     public var useLineMarker: Bool = true
-    public var lineMarkerSize: CGSize = CGSize(width: 5, height: 5)
+    public var lineMarkerSize: CGSize = CGSize(width: 10, height: 10)
     public var lineMarkerBorderSize: CGFloat = 0.25
-    public var lineMarkerBackgroundColor: CGColor = UIColor.black.cgColor
+    public var lineMarkerBorderColor: CGColor = UIColor.black.cgColor
+    public var lineMarkerBackgroundColor: CGColor = UIColor.white.cgColor
     public var label: PieChartLabelSettings = PieChartLabelSettings()
     
     public init() {}
@@ -60,9 +61,13 @@ open class PieLineTextLayer: PieChartLayer {
         chart?.addSubview(label)
 
         if settings.useLineMarker {
-            let dot = UIView(frame: CGRect(x: p1.x, y: p1.y, width: settings.lineMarkerSize.width, height: settings.lineMarkerSize.height))
-            dot.backgroundColor = .red
-            dot.layer.borderColor = settings.lineMarkerBackgroundColor
+            let dot = UIView(frame: CGRect(
+                x: p1.x - (settings.lineMarkerSize.width / 2),
+                y: p1.y - (settings.lineMarkerSize.height / 2),
+                width: settings.lineMarkerSize.width,
+                height: settings.lineMarkerSize.height))
+            dot.layer.backgroundColor = settings.lineMarkerBackgroundColor
+            dot.layer.borderColor = settings.lineMarkerBorderColor
             dot.layer.borderWidth = settings.lineMarkerBorderSize
             dot.layer.cornerRadius = dot.frame.width / 2
             chart?.addSubview(dot)
