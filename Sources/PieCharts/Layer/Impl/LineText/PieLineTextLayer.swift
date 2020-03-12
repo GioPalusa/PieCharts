@@ -63,6 +63,7 @@ open class PieLineTextLayer: PieChartLayer {
                 continue
             } else {
                 chart?.addSubview(label)
+                break
             }
         }
 
