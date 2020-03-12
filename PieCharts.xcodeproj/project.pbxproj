@@ -382,6 +382,8 @@
 				6AC1CD491E1C013900120720 /* PBXTargetDependency */,
 			);
 			name = PieChartsDemo;
+			packageProductDependencies = (
+			);
 			productName = PieCharts;
 			productReference = 6AFF22B71E16DF520001B0A4 /* PieChartsDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -419,6 +421,8 @@
 				Base,
 			);
 			mainGroup = 6AFF22AE1E16DF520001B0A4;
+			packageReferences = (
+			);
 			productRefGroup = 6AFF22B81E16DF520001B0A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

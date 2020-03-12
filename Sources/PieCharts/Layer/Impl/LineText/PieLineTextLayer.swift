@@ -14,7 +14,8 @@ public struct PieLineTextLayerSettings {
     public var lineColor: UIColor = UIColor.black
     public var lineWidth: CGFloat = 1
     public var chartOffset: CGFloat = 5
-    public var labelOffset: CGFloat = 5
+    public var labelXOffset: CGFloat = 5
+    public var labelYOffset: CGFloat = 0
     public var label: PieChartLabelSettings = PieChartLabelSettings()
     
     public init() {}
@@ -84,7 +85,7 @@ open class PieLineTextLayer: PieChartLayer {
         
         label.text = settings.label.textGenerator(slice)
         label.sizeToFit()
-        label.frame.origin = CGPoint(x: referencePoint.x - (isRightSide ? 0 : label.frame.width) + ((isRightSide ? 1 : -1) * settings.labelOffset), y: referencePoint.y - label.frame.height / 2)
+        label.frame.origin = CGPoint(x: referencePoint.x - (isRightSide ? 0 : label.frame.width) + ((isRightSide ? 1 : -1) * settings.labelXOffset), y: referencePoint.y - label.frame.height / 2 + labelYOffset)
         
         return label
     }
