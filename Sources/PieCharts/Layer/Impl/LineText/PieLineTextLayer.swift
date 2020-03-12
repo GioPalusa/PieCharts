@@ -19,6 +19,7 @@ public struct PieLineTextLayerSettings {
     public var useLineMarker: Bool = true
     public var lineMarkerSize: CGSize = CGSize(width: 5, height: 5)
     public var lineMarkerBorderSize: CGFloat = 0.25
+    public var lineMarkerBackgroundColor: CGColor = UIColor.black.cgColor
     public var label: PieChartLabelSettings = PieChartLabelSettings()
     
     public init() {}
@@ -60,6 +61,10 @@ open class PieLineTextLayer: PieChartLayer {
 
         if settings.useLineMarker {
             let dot = UIView(frame: CGRect(x: p1.x, y: p1.y, width: settings.lineMarkerSize.width, height: settings.lineMarkerSize.height))
+            dot.backgroundColor = .red
+            dot.layer.borderColor = settings.lineMarkerBackgroundColor
+            dot.layer.borderWidth = settings.lineMarkerBorderSize
+            dot.layer.cornerRadius = dot.frame.width / 2
             chart?.addSubview(dot)
         }
 
