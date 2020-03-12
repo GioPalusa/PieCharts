@@ -55,33 +55,34 @@ open class PieLineTextLayer: PieChartLayer {
         let lineLayer = createLine(p1: p1, p2: p2, p3: p3)
         let label = createLabel(slice: slice, isRightSide: isRightSide, referencePoint: p3)
 
-        for sliceCheck in sliceViews {
-            if label.frame.intersects(sliceCheck.value.1.frame) {
+        for slice in sliceViews {
+            if label.frame.intersects(slice.value.1.frame) {
+                settings.useLineMarker = false
                 continue
             } else {
-                chart?.addSubview(label)
                 chart?.container.addSublayer(lineLayer)
                 animator.animate(lineLayer)
-
-                if settings.useLineMarker {
-                    let dot = UIView(frame: CGRect(
-                        x: p1.x - (settings.lineMarkerSize.width / 2),
-                        y: p1.y - (settings.lineMarkerSize.height / 2),
-                        width: settings.lineMarkerSize.width,
-                        height: settings.lineMarkerSize.height))
-                    dot.layer.backgroundColor = settings.lineMarkerBackgroundColor
-                    dot.layer.borderColor = settings.lineMarkerBorderColor
-                    dot.layer.borderWidth = settings.lineMarkerBorderSize
-                    dot.layer.cornerRadius = dot.frame.width / 2
-                    chart?.addSubview(dot)
-                }
-
-                animator.animate(label)
-
-                sliceViews[slice] = (lineLayer, label)
+                chart?.addSubview(label)
                 break
             }
         }
+
+        if settings.useLineMarker {
+            let dot = UIView(frame: CGRect(
+                x: p1.x - (settings.lineMarkerSize.width / 2),
+                y: p1.y - (settings.lineMarkerSize.height / 2),
+                width: settings.lineMarkerSize.width,
+                height: settings.lineMarkerSize.height))
+            dot.layer.backgroundColor = settings.lineMarkerBackgroundColor
+            dot.layer.borderColor = settings.lineMarkerBorderColor
+            dot.layer.borderWidth = settings.lineMarkerBorderSize
+            dot.layer.cornerRadius = dot.frame.width / 2
+            chart?.addSubview(dot)
+        }
+
+        animator.animate(label)
+        
+        sliceViews[slice] = (lineLayer, label)
     }
     
     public func createLine(p1: CGPoint, p2: CGPoint, p3: CGPoint) -> CALayer {
