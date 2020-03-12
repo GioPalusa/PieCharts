@@ -59,7 +59,7 @@ open class PieLineTextLayer: PieChartLayer {
         animator.animate(lineLayer)
 
         for slice in sliceViews {
-            if CGRect.intersects(slice.value.1.frame) {
+            if label.frame.intersects(slice.value.1.frame) {
                 continue
             } else {
                 chart?.addSubview(label)
