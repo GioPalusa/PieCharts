@@ -18,7 +18,7 @@ public struct PieLineTextLayerSettings {
     public var labelYOffset: CGFloat = 0
     public var useLineMarker: Bool = true
     public var lineMarkerSize: CGSize = CGSize(width: 10, height: 10)
-    public var lineMarkerBorderSize: CGFloat = 0.25
+    public var lineMarkerBorderSize: CGFloat = 1
     public var lineMarkerBorderColor: CGColor = UIColor.black.cgColor
     public var lineMarkerBackgroundColor: CGColor = UIColor.white.cgColor
     public var label: PieChartLabelSettings = PieChartLabelSettings()

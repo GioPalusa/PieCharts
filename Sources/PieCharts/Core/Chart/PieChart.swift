@@ -47,6 +47,9 @@ import UIKit
         }
     }
 
+    /// Possibility to set a custom background view to fill the void of the donut
+    @IBInspectable public var backgroundView: UIView = UIView()
+
     var animated: Bool {
         return animDuration > 0
     }
@@ -91,6 +94,8 @@ import UIKit
     }
 
     private func sharedInit() {
+        backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
+        layer.addSublayer(backgroundView.layer)
         layer.addSublayer(container)
         container.frame = bounds
     }
