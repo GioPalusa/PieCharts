@@ -16,6 +16,9 @@ public struct PieLineTextLayerSettings {
     public var chartOffset: CGFloat = 5
     public var labelXOffset: CGFloat = 5
     public var labelYOffset: CGFloat = 0
+    public var useLineMarker: Bool = true
+    public var lineMarkerSize: CGSize = CGSize(width: 5, height: 5)
+    public var lineMarkerBorderSize: CGFloat = 0.25
     public var label: PieChartLabelSettings = PieChartLabelSettings()
     
     public init() {}
@@ -54,6 +57,12 @@ open class PieLineTextLayer: PieChartLayer {
         animator.animate(lineLayer)
         
         chart?.addSubview(label)
+
+        if settings.useLineMarker {
+            let dot = UIView(frame: CGRect(x: p1.x, y: p1.y, width: settings.lineMarkerSize.width, height: settings.lineMarkerSize.height))
+            chart?.addSubview(dot)
+        }
+
         animator.animate(label)
         
         sliceViews[slice] = (lineLayer, label)
