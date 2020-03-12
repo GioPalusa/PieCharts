@@ -56,7 +56,7 @@ open class PieLineTextLayer: PieChartLayer {
         let label = createLabel(slice: slice, isRightSide: isRightSide, referencePoint: p3)
 
         for slice in sliceViews {
-            if label.frame.intersects(slice.value.1.frame) {
+            if slice.value.1.frame.intersects(label.frame) {
                 settings.useLineMarker = false
                 continue
             } else {
