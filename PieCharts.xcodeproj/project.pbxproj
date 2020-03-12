@@ -313,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				AC0731512419730D00224EED /* README.md */,
-				AC0731552419734000224EED /* Source */,
+				AC0731552419734000224EED /* Sources */,
 				6AAD966F1E1C030E00BABC91 /* PieChartsDemo */,
 				6AFF22B81E16DF520001B0A4 /* Products */,
 			);
@@ -328,12 +328,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AC0731552419734000224EED /* Source */ = {
+		AC0731552419734000224EED /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				6AAD968C1E1C075300BABC91 /* Package */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
