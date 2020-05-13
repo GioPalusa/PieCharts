@@ -95,9 +95,18 @@ import UIKit
     }
 
     private func sharedInit() {
+        let minimum = min(self.frame.width, self.frame.height)
+        let maximum = max(self.frame.width, self.frame.height)
+        let difference = maximum - minimum
+        let size = minimum
+        let minValueBasedOnHeight = minimum == self.frame.height
+
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
         layer.addSublayer(container)
-        container.bounds = bounds
+        container.frame = .init(x: self.frame.origin.x + (minValueBasedOnHeight ? (difference / 2) : 0),
+                                y: self.frame.origin.y + (minValueBasedOnHeight ? 0 : (difference / 2)),
+                                width: size,
+                                height: size)
     }
 
     fileprivate func generateSlices(_ models: [PieSliceModel]) -> [PieSlice] {
