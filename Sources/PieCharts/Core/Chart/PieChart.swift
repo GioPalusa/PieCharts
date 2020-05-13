@@ -148,8 +148,9 @@ import UIKit
 
             slice.view.present(animated: animated)
         }
+        backgroundView.frame =  .init(x: 0, y: 0, width: 80, height: 80)
         backgroundView.layer.frame = .init(x: 0, y: 0, width: 80, height: 80)
-        container.insertSublayer(backgroundView.layer, at: 0)
+        container.addSublayer(backgroundView.layer)
     }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
