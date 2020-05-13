@@ -58,7 +58,6 @@ import UIKit
     // MARK: -
 
     public fileprivate(set) var container: CALayer = CALayer()
-    public fileprivate var size: CGFloat = 0
 
     public fileprivate(set) var slices: [PieSlice] = []
 
@@ -99,7 +98,7 @@ import UIKit
         let minimum = min(self.frame.width, self.frame.height)
         let maximum = max(self.frame.width, self.frame.height)
         let difference = maximum - minimum
-        size = minimum
+        let size = minimum
         let minValueBasedOnHeight = minimum == self.frame.height
 
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
