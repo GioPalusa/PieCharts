@@ -273,8 +273,8 @@ import UIKit
         anim.fromValue = 0
         anim.toValue = 1
         anim.duration = 0.3
-        view.layer.mask?.setValue(anim.toValue, forKey: anim.keyPath ?? "")
-        view.layer.mask?.add(anim, forKey: anim.keyPath)
+        view.layer.setValue(anim.toValue, forKey: anim.keyPath ?? "")
+        view.layer.add(anim, forKey: anim.keyPath)
     }
 }
 
