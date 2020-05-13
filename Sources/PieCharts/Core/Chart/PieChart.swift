@@ -94,10 +94,7 @@ import UIKit
     }
 
     private func sharedInit() {
-        backgroundView.frame = self.frame
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
-        self.addSubview(backgroundView)
-        self.sendSubviewToBack(backgroundView)
         layer.addSublayer(container)
         container.frame = bounds
     }
@@ -144,6 +141,8 @@ import UIKit
     }
 
     fileprivate func showSlices() {
+        backgroundView.layer.frame = container.frame
+        container.addSublayer(backgroundView.layer)
         for slice in slices {
             container.addSublayer(slice.view)
 
