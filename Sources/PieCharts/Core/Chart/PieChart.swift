@@ -271,9 +271,11 @@ import UIKit
     }
 
     public func resize(_ view: UIView) {
-        UIView.animate(withDuration: 0.3) {
-            view.transform = .identity
-        }
+        let anim = CABasicAnimation(keyPath: "transform.scale")
+        anim.fromValue = 0
+        anim.toValue = 1
+        anim.duration = 0.3
+        view.layer.addSublayer(anim)
     }
 }
 
