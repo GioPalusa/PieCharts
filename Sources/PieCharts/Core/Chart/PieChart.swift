@@ -153,8 +153,8 @@ import UIKit
         }
 
         // Adds backgrounds
-        backgroundView.layer.cornerRadius = backgroundView.frame.width / 2
         backgroundView.frame = .init(x: 0, y: 0, width: innerRadius * 2, height: innerRadius * 2)
+        backgroundView.layer.cornerRadius = backgroundView.frame.width / 2
         backgroundView.center = bounds.center
         container.addSublayer(backgroundView.layer)
         resize(backgroundView)
