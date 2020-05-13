@@ -148,14 +148,20 @@ import UIKit
             shadowView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
             shadowView.layer.cornerRadius = shadowView.frame.width / 2
             shadowView.center = bounds.center
+            shadowView.transform = .init(scaleX: 0.1, y: 0.1)
             container.addSublayer(shadowView.layer)
+            resize(shadowView)
         }
 
         // Adds backgrounds
         backgroundView.layer.cornerRadius = backgroundView.frame.width / 2
         backgroundView.frame = .init(x: 0, y: 0, width: innerRadius * 2, height: innerRadius * 2)
-        container.addSublayer(backgroundView.layer)
         backgroundView.center = bounds.center
+        backgroundView.transform = .init(scaleX: 0.1, y: 0.1)
+        container.addSublayer(backgroundView.layer)
+        resize(backgroundView)
+
+        // Slices
         for slice in slices {
             container.addSublayer(slice.view)
 
@@ -262,6 +268,12 @@ import UIKit
     open override func layoutSubviews() {
         super.layoutSubviews()
         container.frame = bounds
+    }
+
+    public func resize(_ view: UIView) {
+        UIView.animate(withDuration: 0.3) {
+            view.transform = .identity
+        }
     }
 }
 
