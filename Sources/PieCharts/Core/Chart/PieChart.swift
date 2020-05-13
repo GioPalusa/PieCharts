@@ -275,7 +275,7 @@ import UIKit
         anim.fromValue = 0
         anim.toValue = 1
         anim.duration = 0.3
-        view.layer.addSublayer(anim)
+        view.layer.add(anim, forKey: nil)
     }
 }
 
