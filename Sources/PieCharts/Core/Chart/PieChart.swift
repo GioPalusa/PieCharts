@@ -97,7 +97,7 @@ import UIKit
     private func sharedInit() {
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
         layer.addSublayer(container)
-        container.frame = bounds
+        container.bounds = bounds
     }
 
     fileprivate func generateSlices(_ models: [PieSliceModel]) -> [PieSlice] {
