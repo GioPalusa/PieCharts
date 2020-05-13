@@ -142,6 +142,7 @@ import UIKit
 
     fileprivate func showSlices() {
         container.addSublayer(backgroundView.layer)
+        backgroundView.center = bounds.center
         for slice in slices {
             container.addSublayer(slice.view)
 
