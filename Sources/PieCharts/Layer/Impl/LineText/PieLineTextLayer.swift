@@ -21,17 +21,19 @@ public struct PieLineTextLayerSettings {
     public var lineMarkerBorderSize: CGFloat = 1
     public var lineMarkerBorderColor: CGColor = UIColor.black.cgColor
     public var lineMarkerBackgroundColor: CGColor = UIColor.white.cgColor
-    public var label: PieChartLabelSettings = PieChartLabelSettings()
+    public var valueLabel: PieChartLabelSettings = PieChartLabelSettings()
+    public var titleLabel: PieChartLabelSettings = PieChartLabelSettings()
     
     public init() {}
 }
 
 open class PieLineTextLayer: PieChartLayer {
+    typealias SliceLabels = (title: UILabel, value: UILabel)
     public weak var chart: PieChart?
     
     public var settings: PieLineTextLayerSettings = PieLineTextLayerSettings()
     
-    fileprivate var sliceViews = [PieSlice: (CALayer, UILabel)]()
+    fileprivate var sliceViews = [PieSlice: (CALayer, SliceLabels)]()
     
     public var animator: PieLineTextLayerAnimator = AlphaPieLineTextLayerAnimator()
     
@@ -53,16 +55,24 @@ open class PieLineTextLayer: PieChartLayer {
         let p3 = CGPoint(x: p2.x + (isRightSide ? settings.segment2Length : -settings.segment2Length), y: p2.y)
         
         let lineLayer = createLine(p1: p1, p2: p2, p3: p3)
-        let label = createLabel(slice: slice, isRightSide: isRightSide, referencePoint: p3)
+        let valueLabel = createLabel(slice: slice, isRightSide: isRightSide, referencePoint: p3, isTitle: false)
+        let titleLabel = createLabel(slice: slice, isRightSide: isRightSide, referencePoint: p3, isTitle: true)
 
         for slice in sliceViews {
-            if slice.value.1.frame.intersects(label.frame) {
+            if slice.value.1.title.frame.intersects(titleLabel.frame) {
+                settings.useLineMarker = false
+                continue
+            } else {
+                chart?.addSubview(titleLabel)
+            }
+
+            if slice.value.1.value.frame.intersects(valueLabel.frame) {
                 settings.useLineMarker = false
                 continue
             } else {
                 chart?.container.addSublayer(lineLayer)
                 animator.animate(lineLayer)
-                chart?.addSubview(label)
+                chart?.addSubview(valueLabel)
                 break
             }
         }
@@ -80,9 +90,10 @@ open class PieLineTextLayer: PieChartLayer {
             chart?.addSubview(dot)
         }
 
-        animator.animate(label)
+        animator.animate(valueLabel)
+        animator.animate(titleLabel)
         
-        sliceViews[slice] = (lineLayer, label)
+        sliceViews[slice] = (lineLayer, (titleLabel, valueLabel))
     }
     
     public func createLine(p1: CGPoint, p2: CGPoint, p3: CGPoint) -> CALayer {
@@ -100,18 +111,30 @@ open class PieLineTextLayer: PieChartLayer {
         return layer
     }
     
-    public func createLabel(slice: PieSlice, isRightSide: Bool, referencePoint: CGPoint) -> UILabel {
-        let label: UILabel = settings.label.labelGenerator?(slice) ?? {
-            let label = UILabel()
-            label.backgroundColor = settings.label.bgColor
-            label.textColor = settings.label.textColor
-            label.font = settings.label.font
-            return label
-        }()
-        
-        label.text = settings.label.textGenerator(slice)
+    public func createLabel(slice: PieSlice, isRightSide: Bool, referencePoint: CGPoint, isTitle: Bool) -> UILabel {
+        let label: UILabel
+        if isTitle {
+            label = {
+                let label = UILabel()
+                label.text = slice.data.model.title
+                label.textColor = .lightGray
+                label.backgroundColor = settings.valueLabel.bgColor
+                label.font = settings.valueLabel.font
+                return label
+            }()
+        } else {
+            label = settings.valueLabel.labelGenerator?(slice) ?? {
+                let label = UILabel()
+                label.backgroundColor = settings.valueLabel.bgColor
+                label.textColor = settings.valueLabel.textColor
+                label.font = settings.valueLabel.font
+                return label
+                }()
+            label.text = settings.valueLabel.textGenerator(slice)
+        }
+
         label.sizeToFit()
-        label.frame.origin = CGPoint(x: referencePoint.x - (isRightSide ? 0 : label.frame.width) + ((isRightSide ? 1 : -1) * settings.labelXOffset), y: referencePoint.y - label.frame.height / 2 + settings.labelYOffset)
+        label.frame.origin = CGPoint(x: referencePoint.x - (isRightSide ? 0 : label.frame.width) + ((isRightSide ? 1 : -1) * settings.labelXOffset), y: referencePoint.y - label.frame.height / 2 + (isTitle ? settings.labelYOffset : -settings.labelYOffset))
         
         return label
     }
@@ -121,7 +144,8 @@ open class PieLineTextLayer: PieChartLayer {
         
         let offset = selected ? slice.view.selectedOffset : -slice.view.selectedOffset
         UIView.animate(withDuration: 0.15) {
-            label.center = slice.view.calculatePosition(angle: slice.view.midAngle, p: label.center, offset: offset)
+            label.title.center = slice.view.calculatePosition(angle: slice.view.midAngle, p: label.title.center, offset: offset)
+            label.value.center = slice.view.calculatePosition(angle: slice.view.midAngle, p: label.value.center, offset: offset)
         }
         
         layer.position = slice.view.calculatePosition(angle: slice.view.midAngle, p: layer.position, offset: offset)
@@ -130,7 +154,8 @@ open class PieLineTextLayer: PieChartLayer {
     public func clear() {
         for (_, layerView) in sliceViews {
             layerView.0.removeFromSuperlayer()
-            layerView.1.removeFromSuperview()
+            layerView.1.title.removeFromSuperview()
+            layerView.1.value.removeFromSuperview()
         }
         sliceViews.removeAll()
     }
