@@ -12,10 +12,10 @@ import UIKit
     // MARK: - Settings
 
     /// Inner radius of slices - set this to 0 for "no gap".
-    @IBInspectable public var innerRadius: CGFloat = 50
+    private var innerRadius: CGFloat = 50
 
     /// Outer radius of slices.
-    @IBInspectable public var outerRadius: CGFloat = 100
+    private var outerRadius: CGFloat = 100
 
     /// Stroke (border) color of slices.
     @IBInspectable public var strokeColor: UIColor = UIColor.black
@@ -107,6 +107,9 @@ import UIKit
                                 y: self.frame.origin.y + (minValueBasedOnHeight ? 0 : (difference / 2)),
                                 width: size,
                                 height: size)
+
+        innerRadius = size * 0.3
+        outerRadius = size * 0.8
     }
 
     fileprivate func generateSlices(_ models: [PieSliceModel]) -> [PieSlice] {
