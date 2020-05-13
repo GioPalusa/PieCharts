@@ -13,7 +13,7 @@ public class PieChartLabelSettings {
     public var bgColor: UIColor = UIColor.clear
     public var font: UIFont = UIFont.boldSystemFont(ofSize: 20)
 
-    public var textGenerator: (PieSlice) -> String = { "\($0.data.model.value)" }
+    public var textGenerator: (PieSlice) -> PieSliceModel = { $0.data.model }
 
     // Optional custom label - when this is set presentations settings (textColor, etc.) are ignored
     public var labelGenerator: ((PieSlice) -> UILabel)?

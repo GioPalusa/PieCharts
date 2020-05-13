@@ -121,7 +121,7 @@ open class PieLineTextLayer: PieChartLayer {
                 label.font = settings.valueLabel.font
                 return label
                 }()
-            label.text = settings.titleLabel.textGenerator(slice)
+            label.text = settings.titleLabel.textGenerator(slice).title
         } else {
             label = settings.valueLabel.labelGenerator?(slice) ?? {
                 let label = UILabel()
@@ -130,7 +130,7 @@ open class PieLineTextLayer: PieChartLayer {
                 label.font = settings.valueLabel.font
                 return label
                 }()
-            label.text = settings.valueLabel.textGenerator(slice)
+            label.text = String(settings.valueLabel.textGenerator(slice).value)
         }
 
         label.sizeToFit()
