@@ -49,6 +49,7 @@ import UIKit
 
     /// Possibility to set a custom background view to fill the void of the donut
     @IBInspectable public var backgroundView: UIView = UIView()
+    @IBInspectable public var shadowBackgroundView: Bool = false
 
     var animated: Bool {
         return animDuration > 0
@@ -141,6 +142,15 @@ import UIKit
     }
 
     fileprivate func showSlices() {
+        // Shadow background
+        if shadowBackgroundView {
+            let shadowView = UIView(frame: .init(x: 0, y: 0, width: outerRadius * 2 + 16, height: outerRadius * 2 + 16))
+            shadowView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            container.addSublayer(shadowView.layer)
+        }
+
+        // Adds backgrounds
+        backgroundView.frame = .init(x: 0, y: 0, width: innerRadius * 2, height: innerRadius * 2)
         container.addSublayer(backgroundView.layer)
         backgroundView.center = bounds.center
         for slice in slices {
