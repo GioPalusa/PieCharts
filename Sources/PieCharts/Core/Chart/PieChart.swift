@@ -94,6 +94,7 @@ import UIKit
     }
 
     private func sharedInit() {
+        backgroundView.frame = self.frame
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
         self.addSubview(backgroundView)
         self.sendSubviewToBack(backgroundView)
