@@ -114,14 +114,14 @@ open class PieLineTextLayer: PieChartLayer {
     public func createLabel(slice: PieSlice, isRightSide: Bool, referencePoint: CGPoint, isTitle: Bool) -> UILabel {
         let label: UILabel
         if isTitle {
-            label = {
+            label = settings.titleLabel.labelGenerator?(slice) ?? {
                 let label = UILabel()
-                label.text = slice.data.model.title
                 label.textColor = .lightGray
                 label.backgroundColor = settings.valueLabel.bgColor
                 label.font = settings.valueLabel.font
                 return label
-            }()
+                }()
+            label.text = settings.titleLabel.textGenerator(slice)
         } else {
             label = settings.valueLabel.labelGenerator?(slice) ?? {
                 let label = UILabel()
