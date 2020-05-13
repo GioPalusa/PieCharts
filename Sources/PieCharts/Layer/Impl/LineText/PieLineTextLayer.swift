@@ -118,7 +118,7 @@ open class PieLineTextLayer: PieChartLayer {
                 let label = UILabel()
                 label.textColor = .lightGray
                 label.backgroundColor = settings.valueLabel.bgColor
-                label.font = settings.valueLabel.font
+                label.font = settings.titleLabel.font
                 return label
                 }()
             label.text = settings.titleLabel.textGenerator(slice, true)
