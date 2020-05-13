@@ -265,7 +265,7 @@ import UIKit
 
     open override func layoutSubviews() {
         super.layoutSubviews()
-        container.frame = bounds
+        container.frame = self.frame
     }
 
     public func resize(_ view: UIView) {
