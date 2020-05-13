@@ -146,10 +146,13 @@ import UIKit
         if shadowBackgroundView {
             let shadowView = UIView(frame: .init(x: 0, y: 0, width: outerRadius * 2 + 16, height: outerRadius * 2 + 16))
             shadowView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            shadowView.layer.cornerRadius = shadowView.frame.width / 2
+            shadowView.center = bounds.center
             container.addSublayer(shadowView.layer)
         }
 
         // Adds backgrounds
+        backgroundView.layer.cornerRadius = backgroundView.frame.width / 2
         backgroundView.frame = .init(x: 0, y: 0, width: innerRadius * 2, height: innerRadius * 2)
         container.addSublayer(backgroundView.layer)
         backgroundView.center = bounds.center
