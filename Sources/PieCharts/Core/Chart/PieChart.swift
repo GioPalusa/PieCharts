@@ -141,8 +141,6 @@ import UIKit
     }
 
     fileprivate func showSlices() {
-        backgroundView.layer.frame = container.frame
-        container.addSublayer(backgroundView.layer)
         for slice in slices {
             container.addSublayer(slice.view)
 
@@ -150,6 +148,8 @@ import UIKit
 
             slice.view.present(animated: animated)
         }
+        backgroundView.layer.frame = .init(x: 0, y: 0, width: 80, height: 80)
+        container.insertSublayer(backgroundView.layer, at: 0)
     }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
