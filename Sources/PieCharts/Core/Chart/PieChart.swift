@@ -149,6 +149,8 @@ import UIKit
             slice.view.present(animated: animated)
         }
         backgroundView.frame =  .init(x: 0, y: 0, width: 80, height: 80)
+        backgroundView.backgroundColor = .red
+        backgroundView.layer.backgroundColor = .init(srgbRed: 0, green: 0, blue: 255, alpha: 1)
         backgroundView.layer.frame = .init(x: 0, y: 0, width: 80, height: 80)
         container.addSublayer(backgroundView.layer)
     }
