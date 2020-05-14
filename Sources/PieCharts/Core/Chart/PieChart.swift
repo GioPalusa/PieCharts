@@ -17,34 +17,11 @@ import UIKit
     /// Outer radius of slices.
     private var outerRadius: CGFloat = 100
 
-    private var _innerRadiusPercentage: CGFloat = 0.3
-    private var _outerRadiusPercentage: CGFloat = 0.6
-
     /// Sets the inner radius percentage. Value should be between `0 - 1`
-    @IBInspectable public var innerRadiusPercentage: CGFloat = 0 {
-        didSet {
-            if innerRadiusPercentage > 1 {
-                _innerRadiusPercentage = 1
-            } else if innerRadiusPercentage < 0 {
-                _innerRadiusPercentage = 0
-            } else {
-                _innerRadiusPercentage = innerRadiusPercentage
-            }
-        }
-    }
+    @IBInspectable public var innerRadiusPercentage: CGFloat = 0.3
 
     /// Sets the outer radius percentage. Value should be between `0 - 1`
-    @IBInspectable public var outerRadiusPercentage: CGFloat = 0 {
-        didSet {
-            if outerRadiusPercentage > 1 {
-                _outerRadiusPercentage = 1
-            } else if outerRadiusPercentage < 0 {
-                _outerRadiusPercentage = 0
-            } else {
-                _outerRadiusPercentage = outerRadiusPercentage
-            }
-        }
-    }
+    @IBInspectable public var outerRadiusPercentage: CGFloat = 0.6
 
     /// Stroke (border) color of slices.
     @IBInspectable public var strokeColor: UIColor = UIColor.black
@@ -127,8 +104,8 @@ import UIKit
         let minimum = min(bounds.width, bounds.height)
         container.frame = bounds
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
-        innerRadius = minimum * _innerRadiusPercentage
-        outerRadius = minimum * _outerRadiusPercentage
+        innerRadius = minimum * innerRadiusPercentage
+        outerRadius = minimum * outerRadiusPercentage
         layer.addSublayer(container)
     }
 
