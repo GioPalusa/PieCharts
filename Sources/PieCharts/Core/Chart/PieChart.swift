@@ -103,6 +103,7 @@ import UIKit
 
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
         layer.addSublayer(container)
+        print("========= SHAREDINIT =======")
         print("Frame values: \(self.frame)")
         print("Origin: \(self.frame.origin)")
         print("Bounds: \(self.bounds)")
@@ -113,6 +114,8 @@ import UIKit
         print("Should adjust X position: \(shouldAdjustXPosition)")
 
         print("Calculate values: \(self.frame.origin.x + (shouldAdjustXPosition ? (difference / 2) : 0 ))")
+
+        print("==== SHARED INIT STOP ========")
         container.bounds = .init(x: self.frame.origin.x + (shouldAdjustXPosition ? (difference / 2) : 0),
                                 y: self.frame.origin.y + (shouldAdjustXPosition ? 0 : (difference / 2)),
                                 width: size,
@@ -288,6 +291,19 @@ import UIKit
     open override func layoutSubviews() {
         super.layoutSubviews()
         container.frame = self.frame
+        print("========= LAYTOUT SUBVIEWS =======")
+        print("Frame values: \(self.frame)")
+        print("Origin: \(self.frame.origin)")
+        print("Bounds: \(self.bounds)")
+        print("Max size: \(maximum)")
+        print("Min size: \(minimum)")
+        print("Difference: \(difference)")
+        print("Size: \(size)")
+        print("Should adjust X position: \(shouldAdjustXPosition)")
+
+        print("Calculate values: \(self.frame.origin.x + (shouldAdjustXPosition ? (difference / 2) : 0 ))")
+
+        print("==== LAYOUT SUBVIEWS STOP ========")
     }
 
     public func resize(_ view: UIView) {
