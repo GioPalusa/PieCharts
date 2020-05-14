@@ -123,10 +123,10 @@ import UIKit
         xAdjustment = (shouldAdjustXPosition ? (difference / 2) : 0)
         yAdjustment = (shouldAdjustXPosition ? 0 : (difference / 2))
 
-        container.bounds = .init(x: (shouldAdjustXPosition ? (difference / 2) : 0),
-                                y: (shouldAdjustXPosition ? 0 : (difference / 2)),
-                                width: size,
-                                height: size)
+//        container.bounds = .init(x: (shouldAdjustXPosition ? (difference / 2) : 0),
+//                                y: (shouldAdjustXPosition ? 0 : (difference / 2)),
+//                                width: size,
+//                                height: size)
 
         innerRadius = size * 0.1
         outerRadius = size * 0.3
@@ -298,6 +298,7 @@ import UIKit
     open override func layoutSubviews() {
         super.layoutSubviews()
         container.frame = self.frame
+        container.bounds = self.bounds
         print("========= LAYTOUT SUBVIEWS =======")
         print("Frame values: \(self.frame)")
         print("Origin: \(self.frame.origin)")
