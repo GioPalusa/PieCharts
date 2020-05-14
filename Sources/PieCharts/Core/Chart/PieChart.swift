@@ -104,7 +104,7 @@ import UIKit
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
         layer.addSublayer(container)
         print("Frame values: \(self.frame)")
-        print("Calculate values: \(self.frame.origin.x + 0 : (minValueBasedOnHeight ? (difference / 2)))")
+        print("Calculate values: \(self.frame.origin.x + (minValueBasedOnHeight ? 0 : (difference / 2) ))")
         container.bounds = .init(x: self.frame.minX,// + (minValueBasedOnHeight ? (difference / 2) : 0),
                                 y: self.frame.origin.y,// + (minValueBasedOnHeight ? 0 : (difference / 2)),
                                 width: size,
