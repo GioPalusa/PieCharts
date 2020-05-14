@@ -105,7 +105,7 @@ import UIKit
         let shouldAdjustXPosition = size == self.bounds.height
         container.frame = bounds
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
-        layer.addSublayer(container)
+
 //        print("========= SHAREDINIT =======")
 //        print("Frame values: \(self.frame)")
 //        print("Origin: \(self.frame.origin)")
@@ -130,6 +130,7 @@ import UIKit
 //
         innerRadius = size * 0.1
         outerRadius = size * 0.3
+        layer.addSublayer(container)
     }
 
     fileprivate func generateSlices(_ models: [PieSliceModel]) -> [PieSlice] {
@@ -152,9 +153,9 @@ import UIKit
         let newEndAngle = lastEndAngle + CGFloat(angle)
 
         let data = PieSliceData(model: model, id: index, percentage: percentage)
-        let slice = PieSlice(data: data, view: PieSliceLayer(color: model.color, startAngle: lastEndAngle, endAngle: newEndAngle, animDelay: 0, center: container.bounds.center))
+        let slice = PieSlice(data: data, view: PieSliceLayer(color: model.color, startAngle: lastEndAngle, endAngle: newEndAngle, animDelay: 0, center: bounds.center))
 
-        slice.view.frame = container.bounds
+        slice.view.frame = bounds
 
         slice.view.sliceData = data
 
@@ -297,7 +298,7 @@ import UIKit
 
     open override func layoutSubviews() {
         super.layoutSubviews()
-        container.frame = self.frame
+        container.frame = bounds
     }
 
     public func resize(_ view: UIView) {
