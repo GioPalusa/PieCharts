@@ -12,13 +12,31 @@ import UIKit
     // MARK: - Settings
 
     /// Inner radius of slices - set this to 0 for "no gap".
-    @IBInspectable public var innerRadius: CGFloat = 50
+    private var innerRadius: CGFloat = 50
 
     /// Outer radius of slices.
-    @IBInspectable public var outerRadius: CGFloat = 100
+    private var outerRadius: CGFloat = 100
 
-    private var xAdjustment: CGFloat = 0
-    private var yAdjustment: CGFloat = 0
+    /// Sets the inner radius percentage. Value should be between `0 - 1`
+    @IBInspectable public var innerRadiusPercentage: CGFloat = 0.2 {
+        didSet {
+            if innerRadiusPercentage > 1 {
+                innerRadiusPercentage = 1
+            } else if innerRadiusPercentage < 0 {
+                innerRadiusPercentage = 0
+            }
+        }
+    }
+    /// Sets the outer radius percentage. Value should be between `0 - 1`
+    @IBInspectable public var outerRadiusPercentage: CGFloat = 0.3 {
+        didSet {
+            if innerRadiusPercentage > 1 {
+                outerRadiusPercentage = 1
+            } else if innerRadiusPercentage < 0 {
+                outerRadiusPercentage = 0
+            }
+        }
+    }
 
     /// Stroke (border) color of slices.
     @IBInspectable public var strokeColor: UIColor = UIColor.black
@@ -99,14 +117,10 @@ import UIKit
 
     private func sharedInit() {
         let minimum = min(self.bounds.width, self.bounds.height)
-        let maximum = max(self.bounds.width, self.bounds.height)
-        let difference = maximum - minimum
-        let size = minimum
-        let shouldAdjustXPosition = size == self.bounds.height
         container.frame = bounds
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
-        innerRadius = size * 0.2
-        outerRadius = size * 0.3
+        innerRadius = minimum * innerRadiusPercentage
+        outerRadius = minimum * outerRadiusPercentage
         layer.addSublayer(container)
     }
 
