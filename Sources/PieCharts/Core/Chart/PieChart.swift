@@ -107,13 +107,13 @@ import UIKit
 
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
         layer.addSublayer(container)
-//        container.frame = .init(x: self.frame.origin.,// + (minValueBasedOnHeight ? (difference / 2) : 0),
-//                                y: self.frame.origin.y,// + (minValueBasedOnHeight ? 0 : (difference / 2)),
-//                                width: size,
-//                                height: size)
-//
-//        innerRadius = size * 0.1
-//        outerRadius = size * 0.3
+        container.bounds = .init(x: self.frame.origin.x,// + (minValueBasedOnHeight ? (difference / 2) : 0),
+                                y: self.frame.origin.y,// + (minValueBasedOnHeight ? 0 : (difference / 2)),
+                                width: size,
+                                height: size)
+
+        innerRadius = size * 0.1
+        outerRadius = size * 0.3
     }
 
     fileprivate func generateSlices(_ models: [PieSliceModel]) -> [PieSlice] {
