@@ -104,8 +104,8 @@ import UIKit
         let size = minimum
         let shouldAdjustXPosition = size == self.bounds.height
         container.frame = bounds
-//        backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
-//        layer.addSublayer(container)
+        backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
+        layer.addSublayer(container)
 //        print("========= SHAREDINIT =======")
 //        print("Frame values: \(self.frame)")
 //        print("Origin: \(self.frame.origin)")
@@ -128,8 +128,8 @@ import UIKit
 ////                                width: size,
 ////                                height: size)
 //
-//        innerRadius = size * 0.1
-//        outerRadius = size * 0.3
+        innerRadius = size * 0.1
+        outerRadius = size * 0.3
     }
 
     fileprivate func generateSlices(_ models: [PieSliceModel]) -> [PieSlice] {
