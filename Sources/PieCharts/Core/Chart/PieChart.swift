@@ -295,14 +295,6 @@ import UIKit
         print("Frame values: \(self.frame)")
         print("Origin: \(self.frame.origin)")
         print("Bounds: \(self.bounds)")
-        print("Max size: \(maximum)")
-        print("Min size: \(minimum)")
-        print("Difference: \(difference)")
-        print("Size: \(size)")
-        print("Should adjust X position: \(shouldAdjustXPosition)")
-
-        print("Calculate values: \(self.frame.origin.x + (shouldAdjustXPosition ? (difference / 2) : 0 ))")
-
         print("==== LAYOUT SUBVIEWS STOP ========")
     }
 
