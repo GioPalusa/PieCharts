@@ -103,33 +103,33 @@ import UIKit
         let difference = maximum - minimum
         let size = minimum
         let shouldAdjustXPosition = size == self.bounds.height
-
-        backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
-        layer.addSublayer(container)
-        print("========= SHAREDINIT =======")
-        print("Frame values: \(self.frame)")
-        print("Origin: \(self.frame.origin)")
-        print("Bounds: \(self.bounds)")
-        print("Max size: \(maximum)")
-        print("Min size: \(minimum)")
-        print("Difference: \(difference)")
-        print("Size: \(size)")
-        print("Should adjust X position: \(shouldAdjustXPosition)")
-
-        print("Calculate values: \(self.frame.origin.x + (shouldAdjustXPosition ? (difference / 2) : 0 ))")
-
-        print("==== SHARED INIT STOP ========")
-
-        xAdjustment = (shouldAdjustXPosition ? (difference / 2) : 0)
-        yAdjustment = (shouldAdjustXPosition ? 0 : (difference / 2))
-
-//        container.bounds = .init(x: (shouldAdjustXPosition ? (difference / 2) : 0),
-//                                y: (shouldAdjustXPosition ? 0 : (difference / 2)),
-//                                width: size,
-//                                height: size)
-
-        innerRadius = size * 0.1
-        outerRadius = size * 0.3
+        container.frame = bounds
+//        backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
+//        layer.addSublayer(container)
+//        print("========= SHAREDINIT =======")
+//        print("Frame values: \(self.frame)")
+//        print("Origin: \(self.frame.origin)")
+//        print("Bounds: \(self.bounds)")
+//        print("Max size: \(maximum)")
+//        print("Min size: \(minimum)")
+//        print("Difference: \(difference)")
+//        print("Size: \(size)")
+//        print("Should adjust X position: \(shouldAdjustXPosition)")
+//
+//        print("Calculate values: \(self.frame.origin.x + (shouldAdjustXPosition ? (difference / 2) : 0 ))")
+//
+//        print("==== SHARED INIT STOP ========")
+//
+//        xAdjustment = (shouldAdjustXPosition ? (difference / 2) : 0)
+//        yAdjustment = (shouldAdjustXPosition ? 0 : (difference / 2))
+//
+////        container.bounds = .init(x: (shouldAdjustXPosition ? (difference / 2) : 0),
+////                                y: (shouldAdjustXPosition ? 0 : (difference / 2)),
+////                                width: size,
+////                                height: size)
+//
+//        innerRadius = size * 0.1
+//        outerRadius = size * 0.3
     }
 
     fileprivate func generateSlices(_ models: [PieSliceModel]) -> [PieSlice] {
@@ -298,12 +298,12 @@ import UIKit
     open override func layoutSubviews() {
         super.layoutSubviews()
         container.frame = self.frame
-        container.bounds = self.bounds
-        print("========= LAYTOUT SUBVIEWS =======")
-        print("Frame values: \(self.frame)")
-        print("Origin: \(self.frame.origin)")
-        print("Bounds: \(self.bounds)")
-        print("==== LAYOUT SUBVIEWS STOP ========")
+//        container.bounds = self.bounds
+//        print("========= LAYTOUT SUBVIEWS =======")
+//        print("Frame values: \(self.frame)")
+//        print("Origin: \(self.frame.origin)")
+//        print("Bounds: \(self.bounds)")
+//        print("==== LAYOUT SUBVIEWS STOP ========")
     }
 
     public func resize(_ view: UIView) {
