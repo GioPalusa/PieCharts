@@ -93,22 +93,18 @@ import UIKit
         super.init(coder: aDecoder)
         sharedInit()
     }
-
-    private func getMinimumSize() -> CGFloat {
+    
+    private func sharedInit() {
         let minimum = min(self.frame.width, self.frame.height)
         let maximum = max(self.frame.width, self.frame.height)
         let difference = maximum - minimum
-        return minimum
-    }
-
-    private func sharedInit() {
-        let size = getMinimumSize()
+        let size = minimum
         let minValueBasedOnHeight = size == self.frame.height
 
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
         layer.addSublayer(container)
-        container.bounds = .init(x: self.frame.origin.x,// + (minValueBasedOnHeight ? (difference / 2) : 0),
-                                y: self.frame.origin.y,// + (minValueBasedOnHeight ? 0 : (difference / 2)),
+        container.bounds = .init(x: self.frame.origin.x + (minValueBasedOnHeight ? (difference / 2) : 0),
+                                y: self.frame.origin.y + (minValueBasedOnHeight ? 0 : (difference / 2)),
                                 width: size,
                                 height: size)
 
@@ -283,10 +279,6 @@ import UIKit
         super.layoutSubviews()
         let size = getMinimumSize()
         container.frame = self.frame
-//        container.frame = .init(x: self.frame.origin.x,// + (minValueBasedOnHeight ? (difference / 2) : 0),
-//            y: self.frame.origin.y,// + (minValueBasedOnHeight ? 0 : (difference / 2)),
-//            width: size,
-//            height: size)
     }
 
     public func resize(_ view: UIView) {
