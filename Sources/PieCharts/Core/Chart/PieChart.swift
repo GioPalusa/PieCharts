@@ -17,6 +17,9 @@ import UIKit
     /// Outer radius of slices.
     private var outerRadius: CGFloat = 100
 
+    private var xAdjustment: CGFloat = 0
+    private var yAdjustment: CGFloat = 0
+
     /// Stroke (border) color of slices.
     @IBInspectable public var strokeColor: UIColor = UIColor.black
 
@@ -116,8 +119,12 @@ import UIKit
         print("Calculate values: \(self.frame.origin.x + (shouldAdjustXPosition ? (difference / 2) : 0 ))")
 
         print("==== SHARED INIT STOP ========")
-        container.bounds = .init(x: self.frame.origin.x + (shouldAdjustXPosition ? (difference / 2) : 0),
-                                y: self.frame.origin.y + (shouldAdjustXPosition ? 0 : (difference / 2)),
+
+        xAdjustment = (shouldAdjustXPosition ? (difference / 2) : 0)
+        yAdjustment = (shouldAdjustXPosition ? 0 : (difference / 2))
+
+        container.bounds = .init(x: (shouldAdjustXPosition ? (difference / 2) : 0),
+                                y: (shouldAdjustXPosition ? 0 : (difference / 2)),
                                 width: size,
                                 height: size)
 
