@@ -19,21 +19,25 @@ import UIKit
 
     /// Sets the inner radius percentage. Value should be between `0 - 1`
     @IBInspectable public var innerRadiusPercentage: CGFloat = 0.2 {
-        didSet {
+        set {
             if innerRadiusPercentage > 1 {
                 innerRadiusPercentage = 1
             } else if innerRadiusPercentage < 0 {
                 innerRadiusPercentage = 0
+            } else {
+                innerRadiusPercentage = newValue
             }
         }
     }
     /// Sets the outer radius percentage. Value should be between `0 - 1`
     @IBInspectable public var outerRadiusPercentage: CGFloat = 0.3 {
-        didSet {
+        set {
             if innerRadiusPercentage > 1 {
                 outerRadiusPercentage = 1
             } else if innerRadiusPercentage < 0 {
                 outerRadiusPercentage = 0
+            } else {
+                outerRadiusPercentage = newValue
             }
         }
     }
