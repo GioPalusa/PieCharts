@@ -12,10 +12,10 @@ import UIKit
     // MARK: - Settings
 
     /// Inner radius of slices - set this to 0 for "no gap".
-    private var innerRadius: CGFloat = 50
+    @IBInspectable public var innerRadius: CGFloat = 50
 
     /// Outer radius of slices.
-    private var outerRadius: CGFloat = 100
+    @IBInspectable public var outerRadius: CGFloat = 100
 
     private var xAdjustment: CGFloat = 0
     private var yAdjustment: CGFloat = 0
@@ -105,30 +105,7 @@ import UIKit
         let shouldAdjustXPosition = size == self.bounds.height
         container.frame = bounds
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
-
-//        print("========= SHAREDINIT =======")
-//        print("Frame values: \(self.frame)")
-//        print("Origin: \(self.frame.origin)")
-//        print("Bounds: \(self.bounds)")
-//        print("Max size: \(maximum)")
-//        print("Min size: \(minimum)")
-//        print("Difference: \(difference)")
-//        print("Size: \(size)")
-//        print("Should adjust X position: \(shouldAdjustXPosition)")
-//
-//        print("Calculate values: \(self.frame.origin.x + (shouldAdjustXPosition ? (difference / 2) : 0 ))")
-//
-//        print("==== SHARED INIT STOP ========")
-//
-//        xAdjustment = (shouldAdjustXPosition ? (difference / 2) : 0)
-//        yAdjustment = (shouldAdjustXPosition ? 0 : (difference / 2))
-//
-//        container.bounds = .init(x: (shouldAdjustXPosition ? (difference / 2) : 0),
-//                                y: (shouldAdjustXPosition ? 0 : (difference / 2)),
-//                                width: size,
-//                                height: size)
-//
-        innerRadius = size * 0.1
+        innerRadius = size * 0.2
         outerRadius = size * 0.3
         layer.addSublayer(container)
     }
