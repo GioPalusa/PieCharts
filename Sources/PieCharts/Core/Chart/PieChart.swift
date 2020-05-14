@@ -98,8 +98,8 @@ import UIKit
         let minimum = min(bounds.width, bounds.height)
         container.frame = bounds
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
-        innerRadius = (minimum/2) * 0.7
-        outerRadius = (minimum/2) * 1
+        innerRadius = (minimum/2) * 0.4
+        outerRadius = (minimum/2) * 0.8
         layer.addSublayer(container)
     }
 
