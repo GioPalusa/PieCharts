@@ -17,28 +17,38 @@ import UIKit
     /// Outer radius of slices.
     private var outerRadius: CGFloat = 100
 
+    private var _innerRadiusPercentage: CGFloat = 0.2
+    private var _outerRadiusPercentage: CGFloat = 0.3
+
     /// Sets the inner radius percentage. Value should be between `0 - 1`
-    @IBInspectable public var innerRadiusPercentage: CGFloat = 0.2 {
+    @IBInspectable public var innerRadiusPercentage: CGFloat {
         set {
             if innerRadiusPercentage > 1 {
-                innerRadiusPercentage = 1
+                _innerRadiusPercentage = 1
             } else if innerRadiusPercentage < 0 {
-                innerRadiusPercentage = 0
+                _innerRadiusPercentage = 0
             } else {
-                innerRadiusPercentage = newValue
+                _innerRadiusPercentage = newValue
             }
         }
+        get {
+            _innerRadiusPercentage
+        }
     }
+
     /// Sets the outer radius percentage. Value should be between `0 - 1`
-    @IBInspectable public var outerRadiusPercentage: CGFloat = 0.3 {
+    @IBInspectable public var outerRadiusPercentage: CGFloat {
         set {
             if innerRadiusPercentage > 1 {
-                outerRadiusPercentage = 1
+                _outerRadiusPercentage = 1
             } else if innerRadiusPercentage < 0 {
-                outerRadiusPercentage = 0
+                _outerRadiusPercentage = 0
             } else {
-                outerRadiusPercentage = newValue
+                _outerRadiusPercentage = newValue
             }
+        }
+        get {
+            _outerRadiusPercentage
         }
     }
 
@@ -120,7 +130,7 @@ import UIKit
     }
 
     private func sharedInit() {
-        let minimum = min(self.bounds.width, self.bounds.height)
+        let minimum = min(bounds.width, bounds.height)
         container.frame = bounds
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
         innerRadius = minimum * innerRadiusPercentage
