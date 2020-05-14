@@ -123,10 +123,10 @@ import UIKit
 //        xAdjustment = (shouldAdjustXPosition ? (difference / 2) : 0)
 //        yAdjustment = (shouldAdjustXPosition ? 0 : (difference / 2))
 //
-////        container.bounds = .init(x: (shouldAdjustXPosition ? (difference / 2) : 0),
-////                                y: (shouldAdjustXPosition ? 0 : (difference / 2)),
-////                                width: size,
-////                                height: size)
+//        container.bounds = .init(x: (shouldAdjustXPosition ? (difference / 2) : 0),
+//                                y: (shouldAdjustXPosition ? 0 : (difference / 2)),
+//                                width: size,
+//                                height: size)
 //
         innerRadius = size * 0.1
         outerRadius = size * 0.3
@@ -152,9 +152,9 @@ import UIKit
         let newEndAngle = lastEndAngle + CGFloat(angle)
 
         let data = PieSliceData(model: model, id: index, percentage: percentage)
-        let slice = PieSlice(data: data, view: PieSliceLayer(color: model.color, startAngle: lastEndAngle, endAngle: newEndAngle, animDelay: 0, center: bounds.center))
+        let slice = PieSlice(data: data, view: PieSliceLayer(color: model.color, startAngle: lastEndAngle, endAngle: newEndAngle, animDelay: 0, center: container.bounds.center))
 
-        slice.view.frame = bounds
+        slice.view.frame = container.bounds
 
         slice.view.sliceData = data
 
@@ -298,12 +298,6 @@ import UIKit
     open override func layoutSubviews() {
         super.layoutSubviews()
         container.frame = self.frame
-//        container.bounds = self.bounds
-//        print("========= LAYTOUT SUBVIEWS =======")
-//        print("Frame values: \(self.frame)")
-//        print("Origin: \(self.frame.origin)")
-//        print("Bounds: \(self.bounds)")
-//        print("==== LAYOUT SUBVIEWS STOP ========")
     }
 
     public func resize(_ view: UIView) {
