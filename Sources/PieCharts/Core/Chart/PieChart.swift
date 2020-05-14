@@ -94,22 +94,26 @@ import UIKit
         sharedInit()
     }
 
-    private func sharedInit() {
+    private func getMinimumSize() -> CGFloat {
         let minimum = min(self.frame.width, self.frame.height)
         let maximum = max(self.frame.width, self.frame.height)
         let difference = maximum - minimum
-        let size = minimum
-        let minValueBasedOnHeight = minimum == self.frame.height
+        return minimum
+    }
+
+    private func sharedInit() {
+        let size = getMinimumSize()
+        let minValueBasedOnHeight = size == self.frame.height
 
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
         layer.addSublayer(container)
-        container.frame = .init(x: self.bounds.origin.x,// + (minValueBasedOnHeight ? (difference / 2) : 0),
-                                y: self.bounds.origin.y,// + (minValueBasedOnHeight ? 0 : (difference / 2)),
+        container.frame = .init(x: self.frame.origin.x,// + (minValueBasedOnHeight ? (difference / 2) : 0),
+                                y: self.frame.origin.y,// + (minValueBasedOnHeight ? 0 : (difference / 2)),
                                 width: size,
                                 height: size)
 
-        innerRadius = size * 0.3
-        outerRadius = size * 0.8
+        innerRadius = size * 0.1
+        outerRadius = size * 0.3
     }
 
     fileprivate func generateSlices(_ models: [PieSliceModel]) -> [PieSlice] {
@@ -277,7 +281,11 @@ import UIKit
 
     open override func layoutSubviews() {
         super.layoutSubviews()
-        container.frame = self.frame
+        let size = getMinimumSize()
+        container.frame = .init(x: self.frame.origin.x,// + (minValueBasedOnHeight ? (difference / 2) : 0),
+            y: self.frame.origin.y,// + (minValueBasedOnHeight ? 0 : (difference / 2)),
+            width: size,
+            height: size)
     }
 
     public func resize(_ view: UIView) {
