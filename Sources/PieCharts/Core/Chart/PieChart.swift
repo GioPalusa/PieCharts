@@ -17,8 +17,8 @@ import UIKit
     /// Outer radius of slices.
     private var outerRadius: CGFloat = 100
 
-    private var _innerRadiusPercentage: CGFloat = 0.2
-    private var _outerRadiusPercentage: CGFloat = 0.3
+    private var _innerRadiusPercentage: CGFloat = 0.1
+    private var _outerRadiusPercentage: CGFloat = 0.9
 
     /// Sets the inner radius percentage. Value should be between `0 - 1`
     @IBInspectable public var innerRadiusPercentage: CGFloat {
