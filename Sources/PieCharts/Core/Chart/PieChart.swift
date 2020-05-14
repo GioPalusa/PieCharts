@@ -99,20 +99,22 @@ import UIKit
         let maximum = max(self.bounds.width, self.bounds.height)
         let difference = maximum - minimum
         let size = minimum
-        let minValueBasedOnHeight = size == self.bounds.height
+        let shouldAdjustXPosition = size == self.bounds.height
 
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
         layer.addSublayer(container)
         print("Frame values: \(self.frame)")
+        print("Origin: \(self.frame.origin)")
+        print("Bounds: \(self.bounds)")
         print("Max size: \(maximum)")
         print("Min size: \(minimum)")
         print("Difference: \(difference)")
         print("Size: \(size)")
-        print("Based on height: \(minValueBasedOnHeight)")
+        print("Should adjust X position: \(shouldAdjustXPosition)")
 
-        print("Calculate values: \(self.frame.origin.x + (minValueBasedOnHeight ? 0 : (difference / 2) ))")
-        container.bounds = .init(x: self.frame.minX + (minValueBasedOnHeight ? (difference / 2) : 0),
-                                y: self.frame.origin.y + (minValueBasedOnHeight ? 0 : (difference / 2)),
+        print("Calculate values: \(self.frame.origin.x + (shouldAdjustXPosition ? (difference / 2) : 0 ))")
+        container.bounds = .init(x: self.frame.origin.x + (shouldAdjustXPosition ? (difference / 2) : 0),
+                                y: self.frame.origin.y + (shouldAdjustXPosition ? 0 : (difference / 2)),
                                 width: size,
                                 height: size)
 
