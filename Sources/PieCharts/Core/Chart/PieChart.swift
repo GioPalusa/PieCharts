@@ -95,16 +95,16 @@ import UIKit
     }
 
     private func sharedInit() {
-        let minimum = min(self.frame.width, self.frame.height)
-        let maximum = max(self.frame.width, self.frame.height)
+        let minimum = min(self.bounds.width, self.bounds.height)
+        let maximum = max(self.bounds.width, self.bounds.height)
         let difference = maximum - minimum
         let size = minimum
-        let minValueBasedOnHeight = size == self.frame.height
+        let minValueBasedOnHeight = size == self.bounds.height
 
         backgroundView.layer.cornerRadius = backgroundView.layer.frame.size.width / 2
         layer.addSublayer(container)
-        container.bounds = .init(x: self.bounds.origin.x + (minValueBasedOnHeight ? (difference / 2) : 0),
-                                y: self.bounds.origin.y + (minValueBasedOnHeight ? 0 : (difference / 2)),
+        container.bounds = .init(x: self.frame.origin.x + (minValueBasedOnHeight ? (difference / 2) : 0),
+                                y: self.frame.origin.y + (minValueBasedOnHeight ? 0 : (difference / 2)),
                                 width: size,
                                 height: size)
 
