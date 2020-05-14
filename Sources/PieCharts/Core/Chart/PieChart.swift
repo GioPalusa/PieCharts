@@ -93,7 +93,7 @@ import UIKit
         super.init(coder: aDecoder)
         sharedInit()
     }
-    
+
     private func sharedInit() {
         let minimum = min(self.frame.width, self.frame.height)
         let maximum = max(self.frame.width, self.frame.height)
@@ -277,7 +277,6 @@ import UIKit
 
     open override func layoutSubviews() {
         super.layoutSubviews()
-        let size = getMinimumSize()
         container.frame = self.frame
     }
 
