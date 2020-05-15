@@ -58,24 +58,24 @@ open class PieLineTextLayer: PieChartLayer {
         let valueLabel = createLabel(slice: slice, isRightSide: isRightSide, referencePoint: p3, isTitle: false)
         let titleLabel = createLabel(slice: slice, isRightSide: isRightSide, referencePoint: p3, isTitle: true)
 
-        for slice in sliceViews {
-            if slice.value.1.title.frame.intersects(titleLabel.frame) {
-                settings.useLineMarker = false
-                continue
-            } else {
-                chart?.addSubview(titleLabel)
-            }
-
-            if slice.value.1.value.frame.intersects(valueLabel.frame) {
-                settings.useLineMarker = false
-                continue
-            } else {
-                chart?.container.addSublayer(lineLayer)
-                animator.animate(lineLayer)
-                chart?.addSubview(valueLabel)
-                break
-            }
-        }
+        chart?.addSubview(titleLabel)
+        chart?.container.addSublayer(lineLayer)
+        animator.animate(lineLayer)
+        chart?.addSubview(valueLabel)
+//        for slice in sliceViews {
+//            if slice.value.1.title.frame.intersects(titleLabel.frame) {
+//                settings.useLineMarker = false
+//                continue
+//            } else {
+//            }
+//
+//            if slice.value.1.value.frame.intersects(valueLabel.frame) {
+//                settings.useLineMarker = false
+//                continue
+//            } else {
+//                break
+//            }
+//        }
 
         if settings.useLineMarker {
             let dot = UIView(frame: CGRect(
