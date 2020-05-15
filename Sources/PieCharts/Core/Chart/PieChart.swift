@@ -30,7 +30,7 @@ import UIKit
     @IBInspectable public var animDuration: Double = 0.5
 
     /// Start angle of chart, in degrees, clockwise. 0 is 3 o'clock, 90 is 6 o'clock, etc.
-    @IBInspectable public var referenceAngle: CGFloat = 0 {
+    @IBInspectable public var referenceAngle: CGFloat = 270 {
         didSet {
             for layer in layers {
                 layer.clear()
