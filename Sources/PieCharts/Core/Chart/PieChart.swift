@@ -51,6 +51,9 @@ import UIKit
     @IBInspectable public var backgroundView: UIView = UIView()
     @IBInspectable public var shadowBackgroundView: Bool = false
 
+    /// minimum required angle to prevent slice labels intersection
+    public var labelOverlapAngleConst: CGFloat?
+
     var animated: Bool {
         return animDuration > 0
     }
