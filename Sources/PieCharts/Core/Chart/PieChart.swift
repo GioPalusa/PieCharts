@@ -278,7 +278,7 @@ import UIKit
         let anim = CABasicAnimation(keyPath: "transform.scale")
         anim.fromValue = 0
         anim.toValue = 1
-        anim.duration = 0.3
+        anim.duration = 10
         view.layer.setValue(anim.toValue, forKey: anim.keyPath ?? "")
         view.layer.add(anim, forKey: anim.keyPath)
     }
