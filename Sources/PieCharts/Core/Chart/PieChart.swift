@@ -12,10 +12,10 @@ import UIKit
     // MARK: - Settings
 
     /// Inner radius of slices - set this to 0 for "no gap".
-    private var innerRadius: CGFloat = 50
+    public var innerRadius: CGFloat = 50
 
     /// Outer radius of slices.
-    private var outerRadius: CGFloat = 100
+    public var outerRadius: CGFloat = 100
 
     /// Stroke (border) color of slices.
     @IBInspectable public var strokeColor: UIColor = UIColor.black
